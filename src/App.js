@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Chart from './components/Chart';
 
@@ -19,7 +18,7 @@ class App extends Component {
     //AJAX Call
     this.setState({
       chartData:{
-        labels: ['Boston675674', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+        labels: ['Boston424', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
         datasets: [
           {
             label:'Population',
@@ -45,6 +44,16 @@ class App extends Component {
       }
     })
   }
+
+  componentDidMount() {
+    // fetch('http://mappy.dali.dartmouth.edu/members.json')
+    //   .then(function(res){
+    //     console.log(res.json());
+    //   })
+      fetch('http://mappy.dali.dartmouth.edu/members.json')
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+      }
 
   render() {
     return (
