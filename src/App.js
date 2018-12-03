@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Chart from './components/Chart';
+import Table from './Table.js';
 
 class App extends Component {
   constructor(){
@@ -98,13 +107,29 @@ class App extends Component {
       // </div>
       <div className="App">
 
+      <AppBar position="static">
+         <Toolbar>
+           <IconButton color="inherit" aria-label="Menu">
+             <MenuIcon />
+           </IconButton>
+           <Typography variant="h6" color="inherit">
+             News
+           </Typography>
+           <Button color="inherit">Login</Button>
+         </Toolbar>
+       </AppBar>
+
           {data.map(info => (
             <div>
             Name: {info.name} | URL: {info.url} | Image: {info.iconUrl} |
             Message: {info.message} | Terms On: {info.terms_on} | Projects: {info.project}
             </div>
           ))}
+
+          <Table allData={this.state.data}/>
       </div>
+
+
       // <Chart chartData={this.state.chartData} legendPosition='bottom'/>
       // <Chart chartData={this.state.chartData} legendPosition='top'/>
     )
