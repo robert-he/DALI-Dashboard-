@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Chart from './components/Chart';
 import Table from './Table.js';
+import MUIDataTable from "./MUIDataTable";
 
 class App extends Component {
   constructor(){
@@ -113,9 +114,9 @@ class App extends Component {
              <MenuIcon />
            </IconButton>
            <Typography variant="h6" color="inherit">
-             News
+             DALI Dashboard
            </Typography>
-           <Button color="inherit">Login</Button>
+           <Button color="inherit"></Button>
          </Toolbar>
        </AppBar>
 
@@ -126,7 +127,37 @@ class App extends Component {
             </div>
           ))}
 
-          <Table allData={this.state.data}/>
+          // <Table allData={this.state.data}/>
+
+          <MUIDataTable
+          title={"DALI Members "}
+          data=
+
+          {data.map(info => (
+          [
+            info.name,
+            info.url,
+            info.iconUrl,
+            info.message,
+            (info.terms_on.map(term => (
+
+                term + " "
+
+            ))),
+            // ["17S", "17X", "17F"],
+            (info.project.map(proj => (
+
+                proj + " "
+              )))
+          ]
+        ))}
+
+         //  [["Joe James", "Test Corp", "Yonkers", "NY"],
+         //   ["John Walsh", "Test Corp", "Hartford", "CT"],
+         //   ["Bob Herm", "Test Corp", "Tampa", "FL"],
+         //   ["James Houston", "Test Corp", "Dallas", "TX"],
+         // ]}
+          columns={["Name", "URL", "Image", "Message", "Terms On", "Projects"]}/>
       </div>
 
 

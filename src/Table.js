@@ -202,12 +202,26 @@ const styles = theme => ({
 
 class EnhancedTable extends React.Component {
 
+  constructor(props) {
+  super(props);
 
-  state = {
+  // console.log(props.allData);
+  props.allData.map(key => console.log(key.terms_on));
+
+  this.state = {
     order: 'asc',
     orderBy: 'URL',
     selected: [],
     data: [
+      // props.allData.map(key=>
+      //   createData(
+      //   key.name,
+      //   key.url,
+      //   key.iconUrl,
+      //   key.message,
+      //   // key.terms_on,
+      //   // key.project
+      // )),
       createData('Ricky', 'Jesus', 3.7, 67, 4.3, "Ice Cream"),
       createData('Yenny', 452, 25.0, 51, 4.9),
       createData('Tanya', 262, 16.0, 24, 6.0),
@@ -221,11 +235,12 @@ class EnhancedTable extends React.Component {
       createData('Tim', 318, 0, 81, 2.0),
       createData('Josh', 360, 19.0, 9, 37.0),
       createData('Kate', 437, 18.0, 63, 4.0),
-      // createData({props.allData}, 123, 532, 636, 54, 75),
+      // createData(props.allData., 123, 532, 636, 54, 75),
     ],
     page: 0,
     rowsPerPage: 10,
   };
+}
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -296,7 +311,7 @@ class EnhancedTable extends React.Component {
               rowCount={data.length}
             />
             <TableBody>
-              {stableSort(data, getSorting(order, orderBy))
+              {stableSort(this.props.allData, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(n => {
                   const isSelected = this.isSelected(n.id);
@@ -316,11 +331,11 @@ class EnhancedTable extends React.Component {
                       <TableCell component="th" scope="row" padding="none">
                         {n.name}
                       </TableCell>
-                      <TableCell >{n.URL}</TableCell>
-                      <TableCell >{n.image}</TableCell>
+                      <TableCell >{n.url}</TableCell>
+                      <TableCell >{n.iconUrl}</TableCell>
                       <TableCell >{n.message}</TableCell>
                       <TableCell >{n.terms_on}</TableCell>
-                      <TableCell >{n.projects}</TableCell>
+                      <TableCell >{n.project}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -333,7 +348,7 @@ class EnhancedTable extends React.Component {
           </Table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25, 100]}
           component="div"
           count={data.length}
           rowsPerPage={rowsPerPage}
