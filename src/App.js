@@ -120,14 +120,14 @@ class App extends Component {
          </Toolbar>
        </AppBar>
 
-          {data.map(info => (
+        {/*  {data.map(info => (
             <div>
             Name: {info.name} | URL: {info.url} | Image: {info.iconUrl} |
             Message: {info.message} | Terms On: {info.terms_on} | Projects: {info.project}
             </div>
-          ))}
+          ))} */}
 
-          // <Table allData={this.state.data}/>
+         {/* <Table allData={this.state.data}/> */}
 
           <MUIDataTable
           title={"DALI Members "}
@@ -158,6 +158,8 @@ class App extends Component {
          //   ["James Houston", "Test Corp", "Dallas", "TX"],
          // ]}
           columns={["Name", "URL", "Image", "Message", "Terms On", "Projects"]}/>
+
+          <Chart/> 
       </div>
 
 
